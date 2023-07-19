@@ -1,3 +1,5 @@
+//server.js
+
 const chats = [
     {
       isGroupChat: false,
