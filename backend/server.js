@@ -8,6 +8,8 @@ app.get("/", (req, res) => {
     res.send("API is Running");
 })
 
+
+
 app.get('/api/chat', (req, res) => {
     res.send(chats);
 })
