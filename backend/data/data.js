@@ -1,5 +1,3 @@
-//server.js
-
 const chats = [
     {
       isGroupChat: false,
@@ -109,4 +107,4 @@ const chats = [
     },
   ];
 
-module.exports= chats
+module.exports = { chats }; 
