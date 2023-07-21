@@ -22,3 +22,5 @@ app.get("/api/chat/:id", (req, res) => {
 const PORT = process.env.PORT;
 
 app.listen(PORT, console.log('Server Started on PORT ' + [PORT]));
+
+// testing updating through VS
