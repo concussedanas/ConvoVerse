@@ -1,10 +1,10 @@
 # ConvoVerse
 
-Chat application.
+#### Chat application. ####
 
-First downloads
-Node
-Express in node
-nodemode
-dotenv
-react
+### First Downloads:
+# Node
+# Express in node
+# nodemode
+# dotenv
+# react
