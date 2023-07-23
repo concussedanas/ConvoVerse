@@ -2,9 +2,9 @@
 
 #### Chat application. ####
 
-# First Downloads:
-### Node
-### Express in node
-### nodemon
-### dotenv
-### react
+## First Downloads:
+### -Node
+### -Express in node
+### -nodemon
+### -dotenv
+### -react
