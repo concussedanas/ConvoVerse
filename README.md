@@ -5,6 +5,6 @@
 ### First Downloads:
 # Node
 # Express in node
-# nodemode
+# nodemon
 # dotenv
 # react
