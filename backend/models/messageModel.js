@@ -10,7 +10,7 @@ const messageModel = mongoose.Schema(
         timestamp: true,
     }
 
-    );
+);
 
 const Message = mongoose.model("Message", messageModel);
 
