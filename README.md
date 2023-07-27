@@ -7,7 +7,7 @@
 ### Node
 
 ### Express in node
-node i express
+npm i express
 
 ### nodemon
 google the installation
@@ -16,6 +16,7 @@ google the installation
 
 ### react
 npm install -g create-react-app
+npm install // run inside frontend aswell
 
 ### Chakra UI
 
