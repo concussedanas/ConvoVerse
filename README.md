@@ -7,12 +7,15 @@
 ### Node
 
 ### Express in node
+node i express
 
 ### nodemon
+google the installation
 
 ### dotenv
 
 ### react
+npm install -g create-react-app
 
 ### Chakra UI
 
