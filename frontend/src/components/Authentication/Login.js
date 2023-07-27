@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { Input, InputGroup, InputRightElement, Button, FormControl, FormLabel, VStack } from '@chakra-ui/react'
+import { Input, InputGroup, InputRightElement, Button, FormControl, FormLabel, VStack, TagLabel, Box } from '@chakra-ui/react'
 
 const Login = () => {
   const [show, setShow] = useState(false);  
@@ -34,17 +34,18 @@ const Login = () => {
                 placeholder='Set Your Password'
                 onChange={(e) => {setPassword(e.target.value)}}
             />
-            <InputRightElement width="4.5rem">
-                <Button h = "1.75rem" size = "sm" onClick={handleClick}>
-                    {show ? "Hide" : "Show"}
-                </Button>
-            
+            <InputRightElement width="50px">
+                <Button size = "0px 0px" h = "7px" w = "7px" position = "absolute" onClick={handleClick}>
+                    <label>
+                        <input value="ON" name="dummy" type="checkbox" class="bubble">
+                        </input>
+                </label>
+            </Button>
             </InputRightElement>
         </InputGroup>
     </FormControl>
 
-
-    <Button colorScheme='blue' width={"100%"} style={{marginTop: 15}} onClick={submitHandler}>
+    <Button class="button">
         Login
     </Button>
     <Button 
