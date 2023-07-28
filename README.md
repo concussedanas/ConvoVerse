@@ -35,3 +35,7 @@ on linux: npm install axios
 ### Mongoose
 
 on linux: npm i mongoose
+
+## Express Async Handler
+
+npm i express-async-handler
