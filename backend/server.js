@@ -6,7 +6,7 @@ const userRoutes = require("./routes/userRoutes");
 
 const app = express();
 dotenv.config();
-// connectDB(); //added
+connectDB(); //added
 
 app.get("/", (req, res) => {
   res.send("API is Running Successfully");

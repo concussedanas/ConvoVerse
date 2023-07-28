@@ -36,6 +36,10 @@ on linux: npm install axios
 
 on linux: npm i mongoose
 
-## Express Async Handler
+### Express Async Handler
 
 npm i express-async-handler
+
+### JSON Web Token
+
+npm i jsonwebtoken
