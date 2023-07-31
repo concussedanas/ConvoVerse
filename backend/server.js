@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
   res.send("API is Running Successfully");
 });
 
-app.use("/api/user", userRoutes)
+app.use('/api/user', userRoutes);
 
 const PORT = process.env.PORT;
 
