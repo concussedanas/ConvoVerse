@@ -15,7 +15,7 @@ google the installation
 ### dotenv
 
 ### react
-npm install -g create-react-app
+npm install -g create-react-app // this is the only one that must be repeated when starting a new project, otherwise all other dependencies can be installed by doing npm install once in the ConvoVerse directory and once in the frontend directory.
 npm install // run inside frontend aswell
 
 ### Chakra UI
@@ -43,3 +43,8 @@ npm i express-async-handler
 ### JSON Web Token
 
 npm i jsonwebtoken
+
+### Install Bcrypt
+
+npm i bcryptjs
+
