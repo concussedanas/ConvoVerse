@@ -9,6 +9,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { useToast } from "@chakra-ui/react";
+import axios from "axios";
 
 const Signup = () => {
   const [show, setShow] = useState(false);
@@ -22,11 +23,11 @@ const Signup = () => {
 
   const handleClick = () => setShow(!show);
 
-  const postDetails = (pics) => {
+  /* const postDetails = (pics) => {
     setLoading(true);
-    if (pic === undefined) {
+    if (pics === undefined) {
       toast({
-        title: "Please select an Image!",
+        title: "Image undefined, please select an Image!",
         status: "warning",
         duration: 5000,
         isClosable: true,
@@ -34,8 +35,8 @@ const Signup = () => {
       });
       return;
     }
-
-    if (pics.type === "image/jpeg" || pics.type === "image/png") {
+    //https://api.cloudinary.com/v1_1/dqrlvyqdl/image/upload
+    if (pics.type !== "image/jpeg" || pics.type !== "image/png") {
       const data = new FormData();
       data.append("file", pics);
       data.append("upload_preset", "ConvoVerse");
@@ -64,7 +65,61 @@ const Signup = () => {
       setLoading(false);
       return;
     }
-  };
+  }; */
+
+  const postDetails = (pics) => {
+    setLoading(true);
+
+    if (pics === undefined) {
+      toast({
+        title: "Please Select an Image!",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      return;
+    }
+
+    if (pics.type !== "image/jpeg" && pics.type !== "image/png") {
+      toast({
+        title: "Please Select a JPEG or PNG Image!",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      setLoading(false);
+      return;
+    }
+
+    if (pics.type === "image/jpeg" || pics.type === "image/png") {
+
+      const data = new FormData()
+      data.append("file", pics)
+      data.append("upload_preset", "dqrlvyqdl");
+      data.append("cloud_name", "ConvoVerse")
+      axios
+        .post("https://api.cloudinary.com/v1_1/dqrlvyqdl/image/upload", data)
+        .then((response) => {
+          console.log("Cloudinary response:", response);
+          setPic(response.data.url.toString());
+          setLoading(false);
+          toast({
+            title: "Image uploaded successfully!",
+            status: "success",
+            duration: 5000,
+            isClosable: true,
+            position: "bottom",
+          });
+        })
+        .catch((error) => {
+          console.log("Cloudinary error:", error);
+          setLoading(false);
+          return;
+        });
+    }
+  }
 
   const submitHandler = () => {};
 
