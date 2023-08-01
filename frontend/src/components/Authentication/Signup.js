@@ -10,6 +10,7 @@ import {
 } from "@chakra-ui/react";
 import { useToast } from "@chakra-ui/react";
 import axios from "axios";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 const Signup = () => {
   const [show, setShow] = useState(false);
@@ -20,10 +21,11 @@ const Signup = () => {
   const [pic, setPic] = useState();
   const [loading, setLoading] = useState(false);
   const toast = useToast();
+  const history = useHistory();
 
   const handleClick = () => setShow(!show);
 
-  /* const postDetails = (pics) => {
+  const postDetails = (pics) => {
     setLoading(true);
     if (pics === undefined) {
       toast({
@@ -65,9 +67,10 @@ const Signup = () => {
       setLoading(false);
       return;
     }
-  }; */
+  };
 
-  const postDetails = (pics) => {
+  //axios way to postDetails
+  /* const postDetails = (pics) => {
     setLoading(true);
 
     if (pics === undefined) {
@@ -119,9 +122,70 @@ const Signup = () => {
           return;
         });
     }
-  }
+  }; */
 
-  const submitHandler = () => {};
+  const submitHandler = async () => {
+    setLoading(true);
+    if (!name || !email || !password || !confirmpassword) {
+      toast({
+        title: "Please fill all the fields",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      setLoading(false);
+      return;
+    }
+
+    if (password !== confirmpassword) {
+      toast({
+        title: "Passwords do not match",
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      setLoading(false);
+      return;
+    }
+
+    try{
+      const config = {
+        headers : {
+          "Content-type" : "application/json",
+        },
+      };
+      const {data} = await axios.post("/api/user", {name, email, password, pic}, config);
+
+      toast({
+        title: "Registration is successful",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      
+      localStorage.setItem('userInfo', JSON.stringify(data));
+
+      setLoading(false);
+      history.push("/chats")
+
+
+
+    }
+    catch (error){
+      toast({
+        title: "Error Occured!",
+        description: error.response.data.message, 
+        status: "warning",
+        duration: 5000,
+        isClosable: true,
+        position: "bottom",
+      });
+      setLoading(false);
+    }
+  };
 
   return (
     <VStack>
