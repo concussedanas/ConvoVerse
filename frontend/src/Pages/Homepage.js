@@ -1,11 +1,24 @@
 import { Container, Box, Text, Image } from "@chakra-ui/react";
-import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react'
+import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
 import React from "react";
-import Login from '../components/Authentication/Login'
-import Signup from '../components/Authentication/Signup'
+import { useEffect } from "react";
+import Login from '../components/Authentication/Login';
+import Signup from '../components/Authentication/Signup';
+import {useHistory} from "react-router-dom";
 
 const Homepage = () => {
-  return <Container maxW='xl' centerContent>
+  
+  const history = useHistory();
+  
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("userInfo"));
+
+    if (user) {
+      history.push("/chats");
+    }
+  }, [history]);
+
+return <Container maxW='xl' centerContent>
     <Box 
       bg ='white'
       w = "100%"
