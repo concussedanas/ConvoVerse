@@ -18,7 +18,7 @@ const Homepage = () => {
     }
   }, [history]);
 
-return <Container maxW='xl' centerContent>
+return (<Container maxW='xl' centerContent>
     <Box 
       bg ='white'
       w = "100%"
@@ -63,7 +63,7 @@ return <Container maxW='xl' centerContent>
       
     </Box>
     
-  </Container>;
+  </Container>);
 };
 
 export default Homepage;
