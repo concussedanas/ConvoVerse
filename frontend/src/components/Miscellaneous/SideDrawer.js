@@ -15,6 +15,8 @@ import ChatLoading from "../ChatLoading";
 
 import UserListItem from "../UserAvatar/UserListItem";
 
+import { Spinner } from "@chakra-ui/spinner";
+
 import {
   Drawer,
   DrawerBody,
@@ -24,6 +26,7 @@ import {
   DrawerContent,
   DrawerCloseButton,
 } from "@chakra-ui/react";
+import { circIn } from "framer-motion";
 
 const SideDrawer = () => {
   const [search, setSearch] = useState("");
@@ -31,7 +34,7 @@ const SideDrawer = () => {
   const [loading, setLoading] = useState(false);
   const [loadingChat, setLoadingChat] = useState();
 
-  const {user, setSeletedChat, chats, setChats} = ChatState();
+  const {user, setSelectedChat, chats, setChats} = ChatState();
   const history = useHistory();
   const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -88,7 +91,10 @@ const SideDrawer = () => {
       };
 
       const { data } = await axios.post("/api/chat", {userId}, config);
-      setSeletedChat(data);
+      
+      if(!chats.find((c) => c._id === data._id)) setChats([data, ...chats])
+      
+      setSelectedChat(data);
       setLoadingChat(false);
       onClose();
     }
@@ -123,7 +129,7 @@ const SideDrawer = () => {
         <Tooltip label="Search Users to chat" hasArrow placement="bottom-end">
           <Button variant="ghost" onClick={onOpen}>
             <i class="fas fa-search"></i>
-            <Text d={{ base: "none", md: "flex" }} px="4">
+            <Text display={{ base: "none", md: "flex" }} px="4">
               Search User
             </Text>
           </Button>
@@ -186,6 +192,7 @@ const SideDrawer = () => {
                 />
               ))
             )}
+            {loadingChat && <Spinner ml="auto" display="flex" />}  
           </DrawerBody>
         </DrawerContent>
       </Drawer>
